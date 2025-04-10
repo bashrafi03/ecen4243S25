@@ -16,7 +16,7 @@ module stimulus ();
    initial 
      begin	
 	clock = 1'b1;
-	forever #5 clock = ~clock;
+	forever #1 clock = ~clock;
      end
 
    initial
@@ -36,11 +36,22 @@ module stimulus ();
    
    initial 
      begin      
-	#0  reset = 1'b0;
-	#12 reset = 1'b1;	
-	#0  In = 1'b0;
-	#20 In = 1'b1;
-	#20 In = 1'b0;
+	#0 reset = 1'b0;
+	#5 reset = 1'b1;	
+     #5 reset = 1'b0;
+
+	#2 In = 1'b0;
+	#2 In = 1'b1;
+
+	#2 In = 1'b0;
+     #2 In = 1'b0;
+     #2 In = 1'b1;
+     #2 In = 1'b1;
+
+     #2 In = 1'b0;
+     #2 In = 1'b1;
+     #2 In = 1'b1;
+     #2 In = 1'b1;
      end
 
 endmodule // stimulus

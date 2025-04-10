@@ -20,9 +20,7 @@
 
 fir:
 
-	lw   t1, 4(a0)	    # t1 = x[0+4];
-	lw   t2, 4(a1)	    # t2 = c[0+4];
-	addi t3, zero, 42	
+	addi a0, zero, 42
 	
 
 donej:

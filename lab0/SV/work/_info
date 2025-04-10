@@ -1,70 +1,76 @@
 m255
 K4
 z2
-!s99 nomlopt
-!s11f vlog 2021.3_1 2021.08, Aug 15 2021
+!s12c _opt
+Z0 !s99 nomlopt
+!s11f vlog 2023.4 2023.10, Oct  9 2023
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/home/jstine/ecen4243/ecen4243S25/lab0/SV
+Z1 dE:/ComputerArchitecture/ecen4243S25/lab0/SV
 T_opt
-Z1 !s110 1734562498
-Vi6g]EM;XBeOmL[AlCYkXW0
+!s110 1738052774
+V5_7MO]>dO1niUXfI8Wb]k0
 04 8 4 work stimulus fast 0
-=1-b07b25d4a6a8-676352c2-3ea03-13546
+=1-60189539da2d-679894a6-f2-6a80
+R0
+!s12f OEM100
+!s12b OEM100
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
 Z2 tCvgOpt 0
 n@_opt
-OL;O;2021.3_1;73
+OL;O;2023.4;77
 vfsm
-Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-R1
+Z3 2fsm.sv|tb_fsm.sv
+Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z5 !s110 1738052773
 !i10b 1
 !s100 a^2@0O]MI?Qo=K2=5cm970
 I]lPo_<ZDnkC4jPaND[W;A0
 S1
-R0
-w1734562462
+R1
+w1737005393
 8fsm.sv
 Ffsm.sv
 !i122 0
 L0 1 29
-Z4 VDg1SIo80bB@j0V0VzS_@n1
-Z5 OL;L;2021.3_1;73
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OL;L;2023.4;77
 r1
 !s85 0
 31
-Z6 !s108 1734562498.000000
-Z7 !s107 tb_fsm.sv|fsm.sv|
-Z8 !s90 fsm.sv|tb_fsm.sv|
+Z8 !s108 1738052773.000000
+Z9 !s107 tb_fsm.sv|fsm.sv|
+Z10 !s90 -reportprogress|300|fsm.sv|tb_fsm.sv|
 !i113 0
-Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z11 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
 vstimulus
 R3
-R1
+R4
+R5
 !i10b 1
-!s100 C1fRHj@T0M02[GB[<gR6K1
-IV^c]>fS5l9Ljji;mm9^PG0
+!s100 h:n1fId^6@RAI;if6PdfP3
+I>j80hzddcIR8;@=TZnYXP3
 S1
-R0
-w1734562494
+R1
+w1737950760
 8tb_fsm.sv
 Ftb_fsm.sv
 !i122 0
-L0 1 46
-R4
-R5
+L0 1 57
+R6
+R7
 r1
 !s85 0
 31
-R6
-R7
 R8
-!i113 0
 R9
+R10
+!i113 0
+R11
 R2

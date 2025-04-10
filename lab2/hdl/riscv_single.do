@@ -80,8 +80,8 @@ configure wave -rowmargin 4
 configure wave -childrowmargin 2
 
 -- Run the Simulation
-run 300 ns
-
+run 5000 ns
+examine sim:/testbench/dut/rv32single/dp/rf/rf[10]
 -- Add schematic
 add schematic -full sim:/testbench/dut/rv32single
 
