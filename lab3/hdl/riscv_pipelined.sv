@@ -92,7 +92,7 @@ module testbench();
    initial
      begin
 	string memfilename;
-        memfilename = {"../testing/sw.memfile"};
+        memfilename = {"../riscvtest/pipe-test.memfile"};
 	$readmemh(memfilename, dut.imem.RAM);
      end
    
@@ -459,7 +459,10 @@ module regfile(input  logic        clk,
    // register 0 hardwired to 0
 
    always_ff @(negedge clk)
-     if (we3) rf[a3] <= wd3;	
+     if (we3) begin 
+      $display("WRITE: x%0d = 0x%08X", a3, wd3);
+      rf[a3] <= wd3;	
+     end
 
    assign rd1 = (a1 != 0) ? rf[a1] : 0;
    assign rd2 = (a2 != 0) ? rf[a2] : 0;
@@ -628,4 +631,3 @@ module alu (input  logic [31:0] a, b,
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub; 
    
 endmodule
-

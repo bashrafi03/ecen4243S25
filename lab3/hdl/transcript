@@ -14,7 +14,7 @@
 # //
 # do {.\riscv_pipelined.do}
 # QuestaSim-64 vlog 2023.4 Compiler 2023.10 Oct  9 2023
-# Start time: 00:59:31 on Apr 13,2025
+# Start time: 04:01:01 on Apr 13,2025
 # vlog -reportprogress 300 riscv_pipelined.sv 
 # -- Compiling module testbench
 # -- Compiling module top
@@ -40,14 +40,14 @@
 # 
 # Top level modules:
 # 	testbench
-# End time: 00:59:31 on Apr 13,2025, Elapsed time: 0:00:00
+# End time: 04:01:01 on Apr 13,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 00:59:31 on Apr 13,2025
+# Start time: 04:01:01 on Apr 13,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
 # ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
-# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=3001, type=RAM at location riscv_pipelined.sv:580
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=3001, type=RAM at location riscv_pipelined.sv:583
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
 # Loading sv_std.std
 # Loading work.testbench(fast)
@@ -75,5 +75,15 @@
 # Loading work.imem(fast)
 # Loading work.dmem(fast)
 # ** Note: (vsim-8900) Creating design debug database vsim.dbg.
-# End time: 01:00:36 on Apr 13,2025, Elapsed time: 0:01:05
+# WRITE: x5 = 0xffffffff
+# WRITE: x5 = 0xffffffff
+# WRITE: x6 = 0x00000003
+# WRITE: x5 = 0x00000002
+# WRITE: x11 = 0x00000010
+# WRITE: x6 = 0x00000012
+# WRITE: x7 = 0x0000001c
+# WRITE: x31 = 0x00000000
+# WRITE: x10 = 0x000007fa
+# WRITE: x0 = 0x00000024
+# End time: 04:04:07 on Apr 13,2025, Elapsed time: 0:03:06
 # Errors: 0, Warnings: 1
