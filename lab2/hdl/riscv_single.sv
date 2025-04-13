@@ -169,7 +169,6 @@ module controller (input  logic [6:0] op,
 		   output logic       MemWrite,
 		   output logic       PCSrc, ALUSrc,
 		   output logic       RegWrite, Jump,
-       output logic       MemStrobe,
 		   output logic [2:0] ImmSrc,
 		   output logic [3:0] ALUControl);
    
@@ -177,7 +176,7 @@ module controller (input  logic [6:0] op,
    logic 			      Branch;
    
    maindec md (op, ResultSrc, MemWrite, Branch,
-	       ALUSrc, RegWrite, Jump, ImmSrc, ALUOp, MemStrobe);
+	       ALUSrc, RegWrite, Jump, ImmSrc, ALUOp);
    aludec ad (op[5], funct3, funct7b5, ALUOp, ALUControl);
 
   assign PCSrc = (Branch & (
@@ -199,26 +198,25 @@ module maindec (input  logic [6:0] op,
 		output logic 	   RegWrite, Jump,
 		output logic [2:0] ImmSrc,
 		output logic [1:0] ALUOp);
-    output logic       MemStrobe;
    
-   logic [13:0] 		   controls;
+   logic [12:0] 		   controls;
    
    assign {RegWrite, ImmSrc, ALUSrc, MemWrite,
-	   ResultSrc, Branch, ALUOp, Jump, MemStrobe} = controls;
+	   ResultSrc, Branch, ALUOp, Jump} = controls;
    
    always_comb
      case(op)
-       // RegWrite_ImmSrc_ALUSrc_MemWrite_ResultSrc_Branch_ALUOp_Jump_MemStrobe
-       7'b0000011: controls = 14'b1_000_1_0_001_0_00_0_1; // lb, lbu, lh, lhu, lw
-       7'b0100011: controls = 14'b0_001_1_1_000_0_00_0_1; // sw
-       7'b0110011: controls = 14'b1_xxx_0_0_000_0_10_0_0; // R–type
-       7'b1100011: controls = 14'b0_010_0_0_000_1_01_0_0; // beq
-       7'b0010011: controls = 14'b1_000_1_0_000_0_10_0_0; // I–type ALU
-       7'b1101111: controls = 14'b1_011_0_0_010_0_00_1_0; // jal
-       7'b1100111: controls = 14'b1_000_0_0_010_0_00_1_0; // jalr
-       7'b0110111: controls = 14'b1_100_x_0_011_0_00_0_0; // lui
-       7'b0010111: controls = 14'b1_100_x_0_111_0_00_0_0; // auipc
-       default: controls = 14'bx_xx_x_x_xx_x_xx_x_x; // ???
+       // RegWrite_ImmSrc_ALUSrc_MemWrite_ResultSrc_Branch_ALUOp_Jump
+       7'b0000011: controls = 13'b1_000_1_0_001_0_00_0; // lb, lbu, lh, lhu, lw
+       7'b0100011: controls = 13'b0_001_1_1_000_0_00_0; // sw
+       7'b0110011: controls = 13'b1_xxx_0_0_000_0_10_0; // R–type
+       7'b1100011: controls = 13'b0_010_0_0_000_1_01_0; // beq
+       7'b0010011: controls = 13'b1_000_1_0_000_0_10_0; // I–type ALU
+       7'b1101111: controls = 13'b1_011_0_0_010_0_00_1; // jal
+       7'b1100111: controls = 13'b1_000_0_0_010_0_00_1; // jalr
+       7'b0110111: controls = 13'b1_100_x_0_011_0_00_0; // lui
+       7'b0010111: controls = 13'b1_100_x_0_111_0_00_0; // auipc
+       default: controls = 13'bx_xx_x_x_xx_x_xx_x; // ???
      endcase // case (op)
    
 endmodule // maindec
@@ -264,7 +262,6 @@ module datapath (input  logic        clk, reset,
 		 input  logic [2:0]  ImmSrc,
 		 input  logic [3:0]  ALUControl,
 		 output logic 	     Zero, Geq, Gequ, Lt, Ltu,
-     output logic        PCReady,
 		 output logic [31:0] PC,
 		 input  logic [31:0] Instr,
 		 output logic [31:0] ALUResult, WriteData,
@@ -278,7 +275,7 @@ module datapath (input  logic        clk, reset,
    logic                             isJALR;
    
    // next PC logic
-   flopr #(32) pcreg (clk, reset, PCReady, PCNext, PC);
+   flopr #(32) pcreg (clk, reset, PCNext, PC);
    adder  pcadd4 (PC, 32'd4, PCPlus4);
    adder  pcaddbranch (PC, ImmExt, PCTarget);
    
@@ -367,7 +364,7 @@ module mux3 #(parameter WIDTH = 8)
    assign y = (s == 3'b000) ? d0 : (s == 3'b001) ? d1 : (s == 3'b010) ? d2 : (s == 3'b011) ? d3 : d4; 
    
 endmodule // mux3
-/*
+
 module top (input  logic        clk, reset,
 	    output logic [31:0] WriteData, DataAdr,
 	    output logic 	MemWrite);
@@ -381,7 +378,7 @@ module top (input  logic        clk, reset,
    dmem dmem (clk, MemWrite, DataAdr, WriteData, ReadData);
    
 endmodule // top
-*/
+
 module imem (input  logic [31:0] a,
 	     output logic [31:0] rd);
    

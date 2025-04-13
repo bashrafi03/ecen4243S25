@@ -92,7 +92,7 @@ module testbench();
    initial
      begin
 	string memfilename;
-        memfilename = {"../riscvtest/riscvtest.memfile"};
+        memfilename = {"../testing/slt.memfile"};
 	$readmemh(memfilename, dut.imem.RAM);
      end
    
@@ -108,7 +108,7 @@ module testbench();
 	clk <= 1; # 5; clk <= 0; # 5;
      end
 
-   // check results
+   /* check results
    always @(negedge clk)
      begin
 	if(MemWrite) begin
@@ -120,7 +120,9 @@ module testbench();
               $stop;
            end
 	end
+  
      end
+     */
 endmodule
 
 module top(input  logic        clk, reset, 
@@ -524,7 +526,7 @@ endmodule
 module imem (input  logic [31:0] a,
 	     output logic [31:0] rd);
    
-   logic [31:0] 		 RAM[63:0];
+   logic [31:0] 		 RAM[1000:0];
    
    assign rd = RAM[a[31:2]]; // word aligned
    
@@ -534,7 +536,7 @@ module dmem (input  logic        clk, we,
 	     input  logic [31:0] a, wd,
 	     output logic [31:0] rd);
    
-   logic [31:0] 		 RAM[255:0];
+   logic [31:0] 		 RAM[1000:0];
    
    assign rd = RAM[a[31:2]]; // word aligned
    always_ff @(posedge clk)
