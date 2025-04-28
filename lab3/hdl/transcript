@@ -1,7 +1,7 @@
 # //  Questa Sim-64
-# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //  Version 2023.4 win64 Oct  9 2023
 # //
-# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  Copyright 1991-2023 Mentor Graphics Corporation
 # //  All Rights Reserved.
 # //
 # //  QuestaSim and its associated documentation contain trade
@@ -12,9 +12,9 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# do riscv_pipelined.do
-# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 08:48:47 on Mar 25,2024
+# do {.\riscv_pipelined.do}
+# QuestaSim-64 vlog 2023.4 Compiler 2023.10 Oct  9 2023
+# Start time: 04:01:01 on Apr 13,2025
 # vlog -reportprogress 300 riscv_pipelined.sv 
 # -- Compiling module testbench
 # -- Compiling module top
@@ -33,19 +33,22 @@
 # -- Compiling module floprc
 # -- Compiling module mux2
 # -- Compiling module mux3
+# -- Compiling module mux4
 # -- Compiling module imem
 # -- Compiling module dmem
 # -- Compiling module alu
 # 
 # Top level modules:
 # 	testbench
-# End time: 08:48:47 on Mar 25,2024, Elapsed time: 0:00:00
+# End time: 04:01:01 on Apr 13,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 08:48:47 on Mar 25,2024
+# Start time: 04:01:01 on Apr 13,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
-# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_pipelined.sv:537
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=3001, type=RAM at location riscv_pipelined.sv:583
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
 # Loading sv_std.std
 # Loading work.testbench(fast)
 # Loading work.top(fast)
@@ -64,16 +67,23 @@
 # Loading work.regfile(fast)
 # Loading work.extend(fast)
 # Loading work.floprc(fast__1)
-# Loading work.mux3(fast)
+# Loading work.mux4(fast)
 # Loading work.alu(fast)
 # Loading work.flopr(fast__2)
+# Loading work.mux3(fast)
 # Loading work.hazard(fast)
 # Loading work.imem(fast)
 # Loading work.dmem(fast)
 # ** Note: (vsim-8900) Creating design debug database vsim.dbg.
-# Simulation succeeded
-# ** Note: $stop    : riscv_pipelined.sv(117)
-#    Time: 275 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at riscv_pipelined.sv line 117
-# End time: 08:50:16 on Mar 25,2024, Elapsed time: 0:01:29
-# Errors: 0, Warnings: 0
+# WRITE: x5 = 0xffffffff
+# WRITE: x5 = 0xffffffff
+# WRITE: x6 = 0x00000003
+# WRITE: x5 = 0x00000002
+# WRITE: x11 = 0x00000010
+# WRITE: x6 = 0x00000012
+# WRITE: x7 = 0x0000001c
+# WRITE: x31 = 0x00000000
+# WRITE: x10 = 0x000007fa
+# WRITE: x0 = 0x00000024
+# End time: 04:04:07 on Apr 13,2025, Elapsed time: 0:03:06
+# Errors: 0, Warnings: 1
